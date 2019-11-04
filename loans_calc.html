@@ -1,0 +1,98 @@
+<div class="main-wrapper" main-page="'personal-loan'">
+    <div class="container">
+        <div class="top-head">
+            <h3>¡Bienvenido al proceso de contratación online!</h3>
+            <hr />
+            <p class="lead">Elige tu cuota mensual con nuestro simulador.</p>
+        </div>
+        <div class="main-content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8">
+                    <!-- Module  -->
+                    <div class="calc-slide">
+                        <div class="calc-slide-container">
+                            <form class="calc-slide-form" id="calcForm" name="calcForm">
+                                <div class="calc-slide-item">
+                                    <label for="amount" class="calc-slide-label">Elige tu importe.</label>
+                                    <div class="calc-slide-range">
+                                        <div class="calc-slide-range-min">
+                                            {{ selectedLoan.Amount_Min | currency : '€' : 0 }}</div>
+                                        <input id="amount" class="calc-slide-range-input range-input" type="range"
+                                            value="{{ selectedLoan.Amount }}" max="{{ selectedLoan.Amount_Max }}"
+                                            min="{{ selectedLoan.Amount_Min }}" step="{{ selectedLoan.Length_Amount }}"
+                                            ng-model="selectedLoan.Amount" ng-mouseup="onSlideChange(selectedLoan)" />
+                                        <div class="calc-slide-range-track"></div>
+                                        <div class="calc-slide-marks amount-marks">
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                        </div>
+                                        <div class="calc-slide-range-max">
+                                            {{ selectedLoan.Amount_Max | currency : '€' : 0 }}</div>
+                                    </div>
+                                    <div class="calc-slide-total range-total">
+                                        {{selectedLoan.Amount | currency : '' : 0 }}</div>
+                                </div>
+                                <div class="calc-slide-item">
+                                    <label for="months" class="calc-slide-label">¿En cuántos meses quieres
+                                        devolverlo?</label>
+                                    <div class="calc-slide-range">
+                                        <div class="calc-slide-range-min">{{ selectedLoan.Deadline_Min}}</div>
+                                        <input id="months" class="calc-slide-range-input range-input" type="range"
+                                            value="{{ selectedLoan.Deadlines }}" min="{{ selectedLoan.Deadline_Min }}"
+                                            max="{{ selectedLoan.Deadline_Max }}" step="12"
+                                            ng-model="selectedLoan.Deadlines"
+                                            ng-mouseup="onSlideChange(selectedLoan)" />
+                                        <div class="calc-slide-range-track"></div>
+                                        <div class="calc-slide-marks month-marks">
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                            <span class="calc-slide-marks-item"></span>
+                                        </div>
+                                        <div class="calc-slide-range-max">{{ selectedLoan.Deadline_Max}}</div>
+                                    </div>
+                                    <div class="calc-slide-total range-total">{{ selectedLoan.Deadlines }}</div>
+                                </div>
+                            </form>
+                            <div class="calc-slide-data">
+                                <h1 class="calc-slide-data-title">Tu cuota mensual</h1>
+                                <div class="calc-slide-data-amount">{{ selectedLoan.Monthly_Fee | currency : '€' : 2 }}
+                                </div>
+                                <div class="calc-slide-data-tax">Tipo deudor:
+                                    {{ selectedLoan.Proposal.TINTruncated | number: 2 }}% <strong>TAE:
+                                        {{ selectedLoan.Proposal.TAETruncated | number:2 }}%</strong></div>
+                                <a class="calc-slide-link modal-condition btn-link" ng-click="openConditions()">Ver
+                                    condiciones</a>
+                                <button class="button calc-slide-button" form="calcForm" type="submit"
+                                    ng-click="openProcess()">Solicita</button>
+                            </div>
+                            <p class="calc-slide-note">
+                                (1) Ejemplo de cálculo basado en financiación formalizada durante
+                                {{ Proposals.fechaValidezDesde }}. Fecha validez de la
+                                oferta hasta {{ Proposals.fechaValidezHasta }}. Financiación sujeta a aprobación por
+                                parte de Santander Consumer E.F.C. S.A.
+                                Comisión de apertura {{selectedLoan.Opening_Commission}}% sobre el importe total del
+                                préstamo, que se descontará del importe a transferir.
+                            </p>
+                        </div>
+                    </div>
+                    <link rel="stylesheet" media="screen" href="assets/css/style-calc-slide.css" />
+                    <script type="text/javascript" src="assets/js/calculator.js"></script>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 hidden-xs"
+                    ng-include="'partials/template/documents-info.html'"></div>
+            </div>
+        </div>
+    </div>
+</div>
