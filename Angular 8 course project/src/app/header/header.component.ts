@@ -9,4 +9,5 @@ export class HeaderComponent {
     constructor() {
         
     }
+    collapsed = true;
 }
