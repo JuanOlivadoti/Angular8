@@ -28,5 +28,6 @@ export class AccountService {
     updateStatus(id: number, status: string) {
         this.accounts[id].status = status;
         this.loggingService.logStatusChange(status);
+
     };
 }
