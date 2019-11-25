@@ -23,7 +23,7 @@ export class RecipeService {
         new Recipe(
             'Pizza',
             'yummy',
-            'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg',
+            'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg',
             [
                 new Ingredient('Basilic', 2),
                 new Ingredient('Cheese', 5),
